@@ -18,6 +18,7 @@ export default class SegPage extends Component {
     super(props);
     this.selectFile = this.selectFile.bind(this);
     this.upload = this.upload.bind(this);
+    this.clear = this.clear.bind(this);
 
     this.state = {
       currentFile: undefined,
@@ -43,6 +44,16 @@ export default class SegPage extends Component {
   upload() {
     this.setState({
       progress: 0
+    });
+  }
+
+  clear(event){
+    console.log( "Eben");
+    this.setState({
+      currentFile: null,
+      previewImage: null,
+      progress: 0,
+      message: ""
     });
   }
 
@@ -92,7 +103,7 @@ export default class SegPage extends Component {
           variant="contained"
           component="span"
           disabled={!currentFile}
-          onClick={this.upload}>
+          onClick={this.clear}>
           Clear
         </Button>
 
