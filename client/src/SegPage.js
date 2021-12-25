@@ -48,7 +48,6 @@ export default class SegPage extends Component {
   }
 
   clear(event){
-    console.log( "Eben");
     this.setState({
       currentFile: null,
       previewImage: null,
