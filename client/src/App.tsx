@@ -1,29 +1,23 @@
 import React from 'react';
-
 import './App.css';
-import Button from '@mui/material/Button';
-import OmAppBar from './components/OmAppBar';
-import OmAppBar2 from './components/OmAppBar2';
-import OmMapBox from './components/OmMapBox';
-import Grid from '@mui/material/Grid';
-import Item from '@mui/material/Grid'
-import SegPage from './SegPage';
-import UploadImages from "./upload-images.component";
+import MapPage from './pages/MapPage';
+import HomePage from './pages/HomePage';
+import SegmentationPage from './pages/Segmentationpage';
 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-     
-        <OmAppBar2/> 
-        <SegPage/>
-        
-       
-    
-      
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element= {<HomePage/>}/>
+        <Route path='/Map' element= {<MapPage/>}/>
+        <Route path='/Segment' element= {<SegmentationPage/>}/>
+      </Routes>
+    </Router>
+
   );
-   /*<OmMapBox/>*/
+
 }
 
 export default App;
