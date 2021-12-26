@@ -6,6 +6,8 @@ import CropFreeIcon from '@mui/icons-material/CropFree';
 
 
 const  MapBoxAcessToken : string = (process.env.REACT_APP_MAPBOX_TOKEN as string)
+const MapStyle : string = "mapbox://styles/mapbox/satellite-v9"
+const MapStyleReq : string = '/styles/mapbox/satellite-v9'
 
 const navControlStyle= {
     right: 10,
@@ -29,13 +31,17 @@ function OmMapBox ()  {
     return <div>
         <ReactMapGL {...viewport} mapboxApiAccessToken= {MapBoxAcessToken} 
         onViewportChange={(viewport: React.SetStateAction<{ latitude: number; longitude: number; width: string; height: string; zoom: number; }>) => {setViewport(viewport)}}
-        mapStyle="mapbox://styles/mapbox/satellite-v9"
+        mapStyle={MapStyle}
         
         >
             <NavigationControl style={navControlStyle} />
             <ScaleControl maxWidth={100} unit="metric" style={scaleControlStyle} />
-            <Button startIcon={<CropFreeIcon />} style={{color:'#000000' ,backgroundColor: '#ffffff', height:'10', width:'10', right:'30', top:'30'}}>
-            </Button>
+            <Button 
+                 startIcon={<CropFreeIcon />} 
+                style={{color:'#000000' ,backgroundColor: '#ffffff', 
+                height:'10', width:'10', right:'30', top:'30'}}
+            >
+        </Button>
         </ReactMapGL>
     </div>
 }
