@@ -3,6 +3,7 @@ import './App.css';
 import MapPage from './pages/MapPage';
 import HomePage from './pages/HomePage';
 import SegmentationPage from './pages/Segmentationpage';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
         <Route path='/Segment' element= {<SegmentationPage/>}/>
       </Routes>
     </Router>
+
   );
+
 }
 
 export default App;
