@@ -19,6 +19,8 @@ export default class SegPage extends Component {
     this.selectFile = this.selectFile.bind(this);
     this.upload = this.upload.bind(this);
     this.clear = this.clear.bind(this);
+    this.download = this.download.bind(this);
+
 
     this.state = {
       currentFile: undefined,
@@ -30,6 +32,36 @@ export default class SegPage extends Component {
       imageInfos: [],
     };
   }
+
+  
+  download(e) {
+    const {
+      currentFile,
+      previewImage,
+      progress,
+      message,
+      imageInfos,
+      isError
+    } = this.state;
+    console.log(e.target.href);
+    fetch(e.target.href, {
+      method: "GET",
+      headers: {}
+    })
+      .then(response => {
+        response.arrayBuffer().then(function(buffer) {
+          const url = window.URL.createObjectURL(new Blob([buffer]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", previewImage); //or any other extension
+          document.body.appendChild(link);
+          link.click();
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
 
   selectFile(event) {
@@ -55,6 +87,12 @@ export default class SegPage extends Component {
       message: ""
     });
   }
+
+  /*download(){
+    window.location.href 
+    = "File/randomfile.docx";
+  }*/
+
 
   render() {
     const {
@@ -106,12 +144,23 @@ export default class SegPage extends Component {
           Clear
         </Button>
 
+        <Button
+          //className="btn-upload"
+          color="primary"
+          variant="contained"
+          component="span"
+          disabled={!currentFile}
+          onClick={this.download}>
+          Download
+        </Button>
+
 
         {previewImage && (
           <div>
             <img className="preview my20" src={previewImage} alt="" />
           </div>
         )}
+
 
 
       </div >
