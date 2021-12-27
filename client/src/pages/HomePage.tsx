@@ -5,8 +5,9 @@ function HomePage(){
     return(
         
         <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'column' }}>
-            <OmAppBar2/> 
-            Im Home Page</div>
+            <OmAppBar2/>
+            <img src='../images/info.jpg' alt='a'> </img>
+        </div>
     )
 }
 
