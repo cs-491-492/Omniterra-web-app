@@ -121,9 +121,7 @@ export default class SegPage extends Component {
              Choose Image
           </Button>
         </label>
-        <div className="file-name">
-        {currentFile ? currentFile.name : null}
-        </div>
+    
         <Button
           //className="btn-upload"
           color="primary"
