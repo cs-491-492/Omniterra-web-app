@@ -6,6 +6,8 @@ import FileSaver from 'file-saver';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { ConstructionOutlined } from '@mui/icons-material';
+import { blob } from 'stream/consumers';
 
 const  MapBoxAcessToken : string = (process.env.REACT_APP_MAPBOX_TOKEN as string)
 const MapStyle : string = "mapbox://styles/mapbox/satellite-v9"
@@ -30,8 +32,8 @@ function OmMapBox ()  {
     
 
     const [viewport, setViewport] = useState({
-        latitude: 45.4211,
-        longitude: -75.6903,
+        latitude: 39.875275,
+        longitude: 32.748524,
         width: "100vw",
         height: "100vh",
         zoom: 10,
@@ -44,13 +46,22 @@ function OmMapBox ()  {
         return `https://api.mapbox.com/${map_style}/static/${longitude},${latitude},${zoom},0/${size}?access_token=${token}`
     }
 
-    const onClickScreenShot = () =>{
+     const onClickScreenShot = async () =>{
         const size = `${viewport.width}x${viewport.height}`;
         const size2= `${1280}x${1280}`
-        const size3 = `${600}x${600}`
+        const size3 = `${1024}x${1024}`
         const reqStr = createReq(MapStyleReq, viewport.longitude,
          viewport.latitude, viewport.zoom,size3, MapBoxAcessToken );
          setImgLink(reqStr)
+
+        const response = await axios({
+            url:imgLink,
+            method:'GET',
+            responseType: 'blob'
+        })  
+        const img = window.URL.createObjectURL(new Blob([response.data],{type:'image/png'}))
+        console.log(img)
+        FileSaver.saveAs(img, "img.png")
     }
 
     const map:any =  <ReactMapGL {...viewport} mapboxApiAccessToken= {MapBoxAcessToken} 
@@ -63,7 +74,7 @@ function OmMapBox ()  {
              startIcon={<CropFreeIcon />} 
             style={{color:'#000000' ,backgroundColor: '#ffffff', 
             height:'10', width:'10', right:'30', top:'30'}}
-            onClick={onClickScreenShot}
+            onClick={ onClickScreenShot}
         >
     </Button>
     <Popup trigger={<button> See Image</button>} position="right center">
