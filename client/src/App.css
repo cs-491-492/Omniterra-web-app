@@ -44,11 +44,18 @@
 .my20 {
   margin-top: 40px;
   margin-bottom: 40px;
+  ;
 }
 
 .mr20 {
   margin-right: 20px;
 }
+
+.info {
+  max-width: 920px;
+  max-height: 600px;
+}
+
 
 .container {
   position: relative;

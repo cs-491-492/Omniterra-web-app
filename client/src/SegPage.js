@@ -7,6 +7,7 @@ import OmMapBox from './components/OmMapBox';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid'
 import { useForm } from "react-hook-form";
+//import SegmentedImage from "./images/segmentedimage.jpg";
 
 import React, { Component } from "react";
 //import { Box, Typography, ListItem, withStyles } from '@material-ui/core';
