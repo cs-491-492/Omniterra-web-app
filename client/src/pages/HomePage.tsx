@@ -4,7 +4,8 @@ import OmAppBar2 from '../components/OmAppBar2';
 function HomePage(){
     return(
         
-        <div><OmAppBar2/> 
+        <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'column' }}>
+            <OmAppBar2/> 
             Im Home Page</div>
     )
 }

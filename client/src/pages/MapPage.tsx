@@ -5,7 +5,7 @@ import OmAppBar from '../components/OmAppBar';
 
 function MapPage() {
     return(
-        <div>
+        <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'column' }}>
      
         <OmAppBar2/> 
        

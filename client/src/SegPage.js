@@ -154,13 +154,11 @@ export default class SegPage extends Component {
 
 
         {previewImage && (
-          <div>
+         <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'row' }}>
+            <img className="preview my20" src={previewImage} alt="" />
             <img className="preview my20" src={previewImage} alt="" />
           </div>
         )}
-
-
-
       </div >
     );
   }
