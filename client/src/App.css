@@ -42,8 +42,8 @@
 }
 
 .my20 {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .mr20 {
@@ -57,7 +57,7 @@
 }
 
 .preview {
-  max-width: 200px;
+  max-width: 600px;
 }
 
 .btn-upload {
