@@ -52,8 +52,8 @@
 }
 
 .info {
-  max-width: 920px;
-  max-height: 600px;
+  height: 100%;
+  width: 100%;
 }
 
 
