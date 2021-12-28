@@ -7,7 +7,7 @@ import OmMapBox from './components/OmMapBox';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid'
 import { useForm } from "react-hook-form";
-//import SegmentedImage from "./images/segmentedimage.jpg";
+import SegmentedImage from "./images/exp_result.png";
 
 import React, { Component } from "react";
 //import { Box, Typography, ListItem, withStyles } from '@material-ui/core';
@@ -157,7 +157,7 @@ export default class SegPage extends Component {
         {previewImage && (
          <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'row' }}>
             <img className="preview my20" src={previewImage} alt="" />
-            <img className="preview my20" src={previewImage} alt="" />
+            <img className="preview my20" src={SegmentedImage} alt="" />
           </div>
         )}
       </div >
