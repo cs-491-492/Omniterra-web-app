@@ -9,3 +9,5 @@ for example:
     and write declare module "shortid"; this will resolve the problem
 
 you should do this in this folder(directory) -> you can also declare the types
+
+generally just download the @types/... packages

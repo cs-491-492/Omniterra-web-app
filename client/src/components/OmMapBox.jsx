@@ -1,17 +1,17 @@
 import { Button, IconButton } from '@mui/material';
 import React, {useState, useEffect} from 'react';
-import ReactMapGL, {NavigationControl , ScaleControl} from 'react-map-gl'
+import ReactMapGL, {NavigationControl , ScaleControl, Marker} from 'react-map-gl'
 import CropFreeIcon from '@mui/icons-material/CropFree';
 import FileSaver from 'file-saver';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { ConstructionOutlined } from '@mui/icons-material';
-import { blob } from 'stream/consumers';
+import earthquakes from '../data/earthquakes.json'
 
-const  MapBoxAcessToken : string = (process.env.REACT_APP_MAPBOX_TOKEN as string)
-const MapStyle : string = "mapbox://styles/mapbox/satellite-v9"
-const MapStyleReq : string = 'styles/v1/mapbox/satellite-v9'
+const  MapBoxAcessToken  = process.env.REACT_APP_MAPBOX_TOKEN 
+const MapStyle  = "mapbox://styles/mapbox/satellite-v9"
+const MapStyleReq  = 'styles/v1/mapbox/satellite-v9'
 //const request:String = `https://api.mapbox.com/{map_style}/static/{longitude},{latitude},{zoom},0/{size}?{token}`
 
 const navControlStyle= {
@@ -28,9 +28,6 @@ const navControlStyle= {
 
 function OmMapBox ()  {
 
-  
-    
-
     const [viewport, setViewport] = useState({
         latitude: 39.875275,
         longitude: 32.748524,
@@ -42,7 +39,7 @@ function OmMapBox ()  {
 
     const [imgLink, setImgLink] = useState('')
 
-    const  createReq = (map_style:string, longitude:number, latitude:number,zoom:number, size:string, token:string) => {
+    const  createReq = (map_style, longitude, latitude,zoom, size, token) => {
         return `https://api.mapbox.com/${map_style}/static/${longitude},${latitude},${zoom},0/${size}?access_token=${token}`
     }
 
@@ -64,8 +61,8 @@ function OmMapBox ()  {
         FileSaver.saveAs(img, "img.png")
     }
 
-    const map:any =  <ReactMapGL {...viewport} mapboxApiAccessToken= {MapBoxAcessToken} 
-    onViewportChange={(viewport: React.SetStateAction<{ latitude: number; longitude: number; width: string; height: string; zoom: number; preserveDrawingBuffer:boolean; }>) => {setViewport(viewport)}}
+    const map =  <ReactMapGL {...viewport} mapboxApiAccessToken= {MapBoxAcessToken} 
+    onViewportChange={(viewport) => {setViewport(viewport)}}
     mapStyle={MapStyle}
     >
         <NavigationControl style={navControlStyle} />
@@ -80,10 +77,21 @@ function OmMapBox ()  {
     <Popup trigger={<button> See Image</button>} position="right center">
     <div><img src={imgLink} alt='idk'></img></div>
     </Popup>
+
+    {earthquakes.features.map( (earthquake) => {
+        <Marker
+        key={earthquake.properties.id}
+        latitude={earthquake.geometry.coordinates[1]}
+        longitude={earthquake.geometry.coordinates[0]}
+        >
+            <button style={{}}> This is an earthquake button</button>
+        </Marker>
+    })}
+
     </ReactMapGL>
 
     return <div>
-     { map}
+     {map}
     </div>
 }
 
