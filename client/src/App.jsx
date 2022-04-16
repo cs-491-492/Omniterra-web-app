@@ -5,19 +5,32 @@ import HomePage from './pages/HomePage';
 import OmAppBar2 from './components/OmAppBar2';
 import SegmentationPage from './pages/Segmentationpage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import KeplerGlReducer from "kepler.gl/reducers";
-import keplerGlReducer from "kepler.gl/reducers";
+import keplerGlReducer, {mapStateUpdaters} from "kepler.gl/reducers";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { taskMiddleware } from "react-palm/tasks";
 import { Provider, useDispatch } from "react-redux";
-import KeplerGl from "kepler.gl";
+import KeplerGl, {DEFAULT_MAP_STYLES} from "kepler.gl";
 import { addDataToMap } from "kepler.gl/actions";
 import useSwr from "swr";
-const  MapBoxAccessToken  = process.env.REACT_APP_MAPBOX_TOKEN 
+const  MapBoxAccessToken  = process.env.REACT_APP_MAPBOX_TOKEN
+
+/*const reducers = combineReducers({
+  keplerGl: keplerGlReducer
+});*/
+
+const customizedKeplerGlReducer = keplerGlReducer.initialState({
+  mapStyle: {
+    mapStyles: {
+        ...DEFAULT_MAP_STYLES,
+    },
+    styleType: 'satellite'
+  }
+});
 
 const reducers = combineReducers({
-  keplerGl: keplerGlReducer
+  keplerGl: customizedKeplerGlReducer
 });
+
 
 const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
 
@@ -42,6 +55,7 @@ function Kgl(){
   return <div>
     <OmAppBar2/>
     <KeplerGl id="map-1" mapboxApiAccessToken={MapBoxAccessToken} 
-    width={window.innerWidth} height={window.innerHeight} />
+    width={window.innerWidth} height={window.innerHeight} styleType={'light'}/>
+
   </div>
 }
