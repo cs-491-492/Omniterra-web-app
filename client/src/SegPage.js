@@ -1,14 +1,6 @@
 
-
 import './App.css';
-import OmAppBar from './components/OmAppBar';
-import OmAppBar2 from './components/OmAppBar2';
-import OmMapBox from './components/OmMapBox';
-import Grid from '@mui/material/Grid';
-import Item from '@mui/material/Grid'
-import { useForm } from "react-hook-form";
 import SegmentedImage from "./images/exp_result.png";
-
 import React, { Component } from "react";
 //import { Box, Typography, ListItem, withStyles } from '@material-ui/core';
 import Button from '@mui/material/Button';

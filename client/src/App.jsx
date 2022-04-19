@@ -3,6 +3,7 @@ import './App.css';
 import MapPage from './pages/MapPage';
 import HomePage from './pages/HomePage';
 import OmAppBar2 from './components/OmAppBar2';
+import GeoJsonForm from './components/GeoJsonForm';
 import SegmentationPage from './pages/Segmentationpage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import keplerGlReducer, {mapStateUpdaters} from "kepler.gl/reducers";
@@ -54,8 +55,10 @@ export default function App() {
 function Kgl(){
   return <div>
     <OmAppBar2/>
+   <GeoJsonForm/>
     <KeplerGl id="map-1" mapboxApiAccessToken={MapBoxAccessToken} 
-    width={window.innerWidth} height={window.innerHeight} styleType={'light'}/>
-
+     width={window.innerWidth} height={window.innerHeight} styleType={'light'}/>
+  
   </div>
 }
+//width={window.innerWidth} height={window.innerHeight}
