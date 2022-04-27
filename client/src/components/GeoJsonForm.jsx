@@ -2,6 +2,13 @@ import React from 'react'
 
 export default function GeoJsonForm() {
 
+    const style = {
+        'border': '1px solid black',
+        'width': '200px',
+        'height': '100px',
+        'backgroundColor': '#000000'
+      }
+
     let gejsonTemplate = {
         "type": "FeatureCollection",
         "features": [
@@ -29,7 +36,7 @@ export default function GeoJsonForm() {
     }
 
     return (
-        <div className='GeoJsonForm'>
+        <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
         <form>
          <textarea 
                 value={formData.comments}

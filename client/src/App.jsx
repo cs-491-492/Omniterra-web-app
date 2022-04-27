@@ -13,6 +13,7 @@ import { Provider, useDispatch } from "react-redux";
 import KeplerGl, {DEFAULT_MAP_STYLES} from "kepler.gl";
 import { addDataToMap } from "kepler.gl/actions";
 import useSwr from "swr";
+import AnnotationPage from './pages/AnnotationPage';
 const  MapBoxAccessToken  = process.env.REACT_APP_MAPBOX_TOKEN
 
 /*const reducers = combineReducers({
@@ -45,6 +46,7 @@ export default function App() {
         <Route path='/Map' element= {<MapPage/>}/>
         <Route path='/Segment' element= {<SegmentationPage/>}/>
         <Route path='/Kepler' element={<Kgl/>}/>
+        <Route path='/Annotation' element={<AnnotationPage/>}/>
       </Routes>
     </Router>
     </Provider>

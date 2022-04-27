@@ -36,7 +36,7 @@ const SegPage2 = () => {
   return (
     <>
       <div style={styles.container}>
-        <input accept="image/*" type="file" onChange={imageChange} />
+        <input style={{}} accept="image/*" type="file" onChange={imageChange} />
         <button onClick={sendImg}> send image </button>
         <button onClick={downloadImage}>Download</button>
         {selectedImage && (
