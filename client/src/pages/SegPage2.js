@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { saveAs } from 'file-saver'
 import axios from "axios";
+
+
 
 const SegPage2 = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -24,11 +26,30 @@ const SegPage2 = () => {
   };
 
   const sendImg = () => {
-    setimgSent(selectedImage);
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+   
+    axios
+      .post("http://127.0.0.1:5000/predict", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+      console.log(res.data)
+      setimgSent(res.data)
+      })
+      .catch((err) => console.log(err));
   };
 
-  const downloadImage = () => {
-    saveAs(URL.createObjectURL(selectedImage), 'image.jpg') // Put your image url here.
+
+  
+
+
+  const downloadImage = async () => {
+    const base64response = await fetch(`data:image/jpeg;base64,${imgSent}`); 
+    const blob = await base64response.blob();
+    saveAs(blob, 'image.jpg');
   }
 
  
@@ -54,7 +75,7 @@ const SegPage2 = () => {
         {imgSent && (
           <div style={styles.preview}>
             <img
-              src={URL.createObjectURL(imgSent)}
+              src={`data:image/png;base64, ${imgSent}`}
               style={styles.image}
               alt="Thumb"
             />
@@ -93,6 +114,7 @@ const styles = {
     border: "none"
   }
 };
+
 
 
 

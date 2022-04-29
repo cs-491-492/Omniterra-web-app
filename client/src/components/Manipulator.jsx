@@ -2,7 +2,7 @@
 import React, { Component, useRef,useState } from "react";
 import * as markerjs2 from "markerjs2";
 import { saveAs } from "file-saver";
-
+//import '../styles/Manipulator.css';
 //The code snippet below is obtained from https://gist.github.com/rickkk856/6a2800cc84dd8fd456074e5a467edc47
 
 function Manipulator(){
@@ -24,7 +24,7 @@ function Manipulator(){
     const sendImg = () => {
     }; 
     */
-
+ /*
     var canvas = document.querySelector('canvas')
     var ctx = canvas.getContext('2d')
 
@@ -102,38 +102,31 @@ function Manipulator(){
         resolve()
         }}
     }})
-    /**
-    <!style>
-        .colors_buttons div {
-            width: 30px;
-            height: 30px;
-            margin: 1px;
-            border: 1px solid black !important;}
-        div {
-            display: inline-block;
-        }
-        canvas{border:1px solid black !important;}
-    </style>
-    */
+   */
+
+    
+
+
+
     return(
     <div className="App">
 
 
-    <canvas id="myCanvas" width="256" height="256"></canvas>
+    <canvas  style={{"border":"1px solid black "}} id="myCanvas" width="256" height="256"></canvas>
 
-    <div class="colors_buttons">
-    <div class="color" style="background-color: #000000;" id-color="#000000"></div>
-    <div class="color" style="background-color: #FFFF00;" id-color="#FFFFFF" opacity="0.5"></div>
-    <div class="color" style="background-color: #FFFF00;" id-color="#FFFF00"></div>
-    <div class="color" style="background-color: #FF00FF;" id-color="#FF00FF"></div>
-    <div class="color" style="background-color: #00FFFF;" id-color="#00FFFF"></div>
-    <div class="color" style="background-color: #FF0000;" id-color="#FF0000"></div>
-    <div class="color" style="background-color: #0000FF;" id-color="#0000FF"></div>
-    <div class="color" style="background-color: #00FF00;" id-color="#00FF00"></div>
+    <div >
+    <div  class="color" style={{"background-color": "#000000",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+    <div class="color" style={{"background-color": "#FFFFFF",  "width": "30px", "height": "30px", "border-radius": "50%", "border":"1px solid black "}} id-color="#FFFFFF" opacity="0.5"></div>
+    <div class="color"  style={{"background-color": "#FFFF00",  "width": "30px", "height": "30px", "border-radius": "50%"}} id-color="#FFFF00"></div>
+    <div class="color" style={{"background-color": "#FF00FF",  "width": "30px", "height": "30px", "border-radius": "50%"}} id-color="#FF00FF"></div>
+    <div class="color" style={{"background-color": "#00FFFF",  "width": "30px", "height": "30px", "border-radius": "50%"}} id-color="#00FFFF"></div>
+    <div class="color" style={{"background-color": "#FF0000",  "width": "30px", "height": "30px", "border-radius": "50%"}} id-color="#FF0000"></div>
+    <div class="color" style={{"background-color": "#0000FF",  "width": "30px", "height": "30px", "border-radius": "50%"}} id-color="#0000FF"></div>
+    <div class="color" style={{"background-color": "#00FF00",  "width": "30px", "height": "30px", "border-radius": "50%"}} id-color="#00FF00"></div>
     </div>
 
     <div>
-    <button id="save">Save</button>
+    <button id="save" >Save</button>
     <button id="save_mask">Save Mask</button>
     <button id="reset">Reset</button>
     <button id="exit">Exit</button>
