@@ -44,6 +44,7 @@ const SegPage2 = () => {
         <input classname="btn" accept="image/*" type="file" onChange={imageChange} />
         <button className="btn" onClick={sendImg}> Send Image </button>
         <button className="btn" onClick={downloadImage}>Download</button>
+        <button className="btn" onClick={downloadImage}>Segmentation</button>
         {selectedImage && (
           <div style={styles.preview}>
             <img
