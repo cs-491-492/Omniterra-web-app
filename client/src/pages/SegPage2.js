@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { saveAs } from 'file-saver'
 import axios from "axios";
+import '../App.css';
+import Logo from "../images/uploadimage.jfif";
 
 const SegPage2 = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -39,30 +41,35 @@ const SegPage2 = () => {
         <input accept="image/*" type="file" onChange={imageChange} />
         <button onClick={sendImg}> send image </button>
         <button onClick={downloadImage}>Download</button>
-        {selectedImage && (
+        <div className = "SegmentationPageUI">
+        { (
           <div style={styles.preview}>
             <img
-              src={URL.createObjectURL(selectedImage)}
+              src={selectedImage ? URL.createObjectURL(selectedImage): Logo}
               style={styles.image}
               alt="Thumb"
             />
-            <button onClick={removeSelectedImage} style={styles.delete}>
+            <div className = "SegmentationPageUI">
+            <input  accept="image/*" type="file" onChange={imageChange} title = "empty"/>
+            <button onClick={removeSelectedImage} style={styles.delete} className = {selectedImage ? "btn" : "hideButton"}>
+              Remove This Image
+            </button>
+            <button className = "btn" onClick={sendImg}> send image </button>
+            </div>
+          </div>
+        )}
+        {(
+          <div style={styles.preview} className ="SegmentationPageUI2">
+            <img
+              src={imgSent ?  URL.createObjectURL(imgSent) : Logo}
+              style={styles.image}
+            />
+            <button onClick={removeSentImage} style={styles.delete} className = {imgSent ? "btn" : "hideButton"} >
               Remove This Image
             </button>
           </div>
         )}
-        {imgSent && (
-          <div style={styles.preview}>
-            <img
-              src={URL.createObjectURL(imgSent)}
-              style={styles.image}
-              alt="Thumb"
-            />
-            <button onClick={removeSentImage} style={styles.delete}>
-              Remove This Image
-            </button>
-          </div>
-        )}
+        </div>
       </div>
     </>
   );
