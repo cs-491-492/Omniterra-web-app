@@ -41,10 +41,16 @@ const SegPage2 = () => {
   return (
     <>
       <div style={styles.container}>
+<<<<<<< HEAD
         <input classname="btn" accept="image/*" type="file" onChange={imageChange} />
         <button className="btn" onClick={sendImg}> Send Image </button>
         <button className="btn" onClick={downloadImage}>Download</button>
         <button className="btn" onClick={downloadImage}>Segmentation</button>
+=======
+        <input style={{}} accept="image/*" type="file" onChange={imageChange} />
+        <button onClick={sendImg}> send image </button>
+        <button onClick={downloadImage}>Download</button>
+>>>>>>> 37e5f000e82070c0a6a7cbac7f5c211507e76dfe
         {selectedImage && (
           <div style={styles.preview}>
             <img
