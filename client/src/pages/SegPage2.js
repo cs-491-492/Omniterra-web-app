@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { saveAs } from 'file-saver'
 import axios from "axios";
+import '../App.css';
 
 const SegPage2 = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -9,8 +10,12 @@ const SegPage2 = () => {
 
   // This function will be triggered when the file field change
   const imageChange = (e) => {
+
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0]);
+    }
+    else{
+      setSelectedImage('../images/info.png');
     }
   };
 
@@ -31,14 +36,14 @@ const SegPage2 = () => {
     saveAs(URL.createObjectURL(selectedImage), 'image.jpg') // Put your image url here.
   }
 
- 
+  
 
   return (
     <>
       <div style={styles.container}>
-        <input accept="image/*" type="file" onChange={imageChange} />
-        <button onClick={sendImg}> send image </button>
-        <button onClick={downloadImage}>Download</button>
+        <input classname="btn" accept="image/*" type="file" onChange={imageChange} />
+        <button className="btn" onClick={sendImg}> Send Image </button>
+        <button className="btn" onClick={downloadImage}>Download</button>
         {selectedImage && (
           <div style={styles.preview}>
             <img
@@ -46,7 +51,7 @@ const SegPage2 = () => {
               style={styles.image}
               alt="Thumb"
             />
-            <button onClick={removeSelectedImage} style={styles.delete}>
+            <button className="btn" onClick={removeSelectedImage} style={styles.delete}>
               Remove This Image
             </button>
           </div>
@@ -58,7 +63,7 @@ const SegPage2 = () => {
               style={styles.image}
               alt="Thumb"
             />
-            <button onClick={removeSentImage} style={styles.delete}>
+            <button className="btn" onClick={removeSentImage} style={styles.delete}>
               Remove This Image
             </button>
           </div>
