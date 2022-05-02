@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink } from 'react-router-dom';
 
 
-const pages = [ '','Map','Segment', 'Kepler'];
+const pages = [ '','Map','Segment', 'Kepler', 'Annotation'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const LOGONAME : string =  'OMNITERRA'
 
@@ -38,14 +38,14 @@ const OmAppBar2 = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ bgcolor: "black", maxHeight:"55px"}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, color: "#99ff99" }}
           >
             {LOGONAME}
           </Typography>
