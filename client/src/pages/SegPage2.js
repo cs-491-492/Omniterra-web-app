@@ -28,10 +28,11 @@ const SegPage2 = () => {
   };
 
   const sendImg = () => {
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-   
-    axios
+  
+    if (selectedImage) {
+      const formData = new FormData();
+      formData.append("image", selectedImage);
+      axios
       .post("http://127.0.0.1:5000/predict", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -46,6 +47,10 @@ const SegPage2 = () => {
       {  setimgSent(selectedImage)
          setFetchError(true)
         console.log(err)});
+    }
+    else {
+      console.log('no image selected')
+    }
   };
 
 
@@ -85,9 +90,11 @@ const SegPage2 = () => {
         {(
           <div style={styles.preview} className ="SegmentationPageUI2">
             <img
+             alt=""
               src={
                 fetchError ? 
-                imgSent ?  URL.createObjectURL(imgSent) : Logo : `data:image/png;base64, ${imgSent}` }
+                imgSent ?  URL.createObjectURL(imgSent) : Logo : `data:image/png;base64, ${imgSent}`
+               }
               style={styles.image}
             />
             <button onClick={removeSentImage} style={styles.delete} className = {imgSent ? "btn" : "hideButton"} >
