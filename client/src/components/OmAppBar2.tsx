@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink } from 'react-router-dom';
 
 
-const pages = [ '','Map','Segment', 'Kepler', 'Annotation'];
+const pages = [ '','Map','Segment', 'Kepler', 'Manipulator'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const LOGONAME : string =  'OMNITERRA'
 

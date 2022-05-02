@@ -1,0 +1,9 @@
+.colors_buttons div {
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    border: 1px solid black !important;}
+div {
+    display: inline-block;
+}
+canvas{border:1px solid black !important;}

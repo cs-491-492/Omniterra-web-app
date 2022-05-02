@@ -78,15 +78,7 @@ function OmMapBox ()  {
     <div><img src={imgLink} alt='idk'></img></div>
     </Popup>
 
-    {earthquakes.features.map( (earthquake) => {
-        <Marker
-        key={earthquake.properties.id}
-        latitude={earthquake.geometry.coordinates[1]}
-        longitude={earthquake.geometry.coordinates[0]}
-        >
-            <button style={{}}> This is an earthquake button</button>
-        </Marker>
-    })}
+    
 
     </ReactMapGL>
 

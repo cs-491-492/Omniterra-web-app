@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { saveAs } from 'file-saver'
 import axios from "axios";
 import '../App.css';
 import Logo from "../images/uploadimage.jfif";
+
+
 
 const SegPage2 = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -126,6 +128,7 @@ const styles = {
     border: "none"
   }
 };
+
 
 
 

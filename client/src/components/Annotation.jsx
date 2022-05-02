@@ -47,28 +47,28 @@ function Annotation() {
   //clear image
   const clearImg = () => {
     setSelectedImage()
-  }
+  };
 
-   const sendImg = () => {
-   } 
-    return (
-      <div className="App">
-       { selectedImage && <img
-          ref={imgRef}
-          src={URL.createObjectURL(selectedImage)}
-          alt="sample"
-          crossOrigin="anonymous"
-          style={{ width:"auot", height:"auto" }}
-          onClick={() => showMarkerArea()}
-        />}
-         
-        <button onClick={downloadImg}> Download Image </button>
-        <input style={{}} accept="image/*" type="file" onChange={imageChange} />
-        <button onClick={clearImg}> Clear Image </button>
-        <button onClick={sendImg}>Send Img</button>
-      </div>
-    );
-  
+  const sendImg = () => {
+  }; 
+
+  return (
+    <div className="App">
+      { selectedImage && <img
+        ref={imgRef}
+        src={URL.createObjectURL(selectedImage)}
+        alt="sample"
+        crossOrigin="anonymous"
+        style={{ width:"auto", height:"auto" }}
+        onClick={() => showMarkerArea()}
+      />}
+        
+      <button onClick={downloadImg}> Download Image </button>
+      <input style={{}} accept="image/*" type="file" onChange={imageChange} />
+      <button onClick={clearImg}> Clear Image </button>
+      <button onClick={sendImg}>Send Img</button>
+    </div>
+  );
 }
 
 
