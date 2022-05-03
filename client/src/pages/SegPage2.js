@@ -40,7 +40,7 @@ const SegPage2 = () => {
       })
       .then((res) => {
       console.log(res.data)
-      setimgSent(res.data)
+      setimgSent(res.data.img)
       setFetchError(false);
       })
       .catch((err) => 
