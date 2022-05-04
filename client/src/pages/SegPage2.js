@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver'
 import axios from "axios";
 import '../App.css';
 import Logo from "../images/uploadimage.jfif";
+import {VictoryPie} from 'victory'
 
 
 
@@ -11,6 +12,7 @@ const SegPage2 = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [imgSent, setimgSent] = useState();
   const [fetchError,setFetchError] = useState(false);
+  const [fetchRatio, setFetchRatio] = useState();
   // This function will be triggered when the file field change
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -27,11 +29,14 @@ const SegPage2 = () => {
     setimgSent();
   };
 
+  const  [cForm, setCForm] = React.useState({data:""});
+
   const sendImg = () => {
   
     if (selectedImage) {
       const formData = new FormData();
       formData.append("image", selectedImage);
+      formData.append("cname", cForm.data);
       axios
       .post("http://127.0.0.1:5000/predict", formData, {
         headers: {
@@ -41,6 +46,7 @@ const SegPage2 = () => {
       .then((res) => {
       console.log(res.data)
       setimgSent(res.data.img)
+      setFetchRatio(res.data.ratio_dict)
       setFetchError(false);
       })
       .catch((err) => 
@@ -65,6 +71,16 @@ const SegPage2 = () => {
     }
   }
 
+  function handleChange(event) {
+    const {name, value} = event.target
+    setCForm(prevState => ({
+        ...prevState,
+        [name]: value
+    }))
+    console.log(cForm.data)
+  }
+
+
   return (
     
       <div style={styles.container}>
@@ -87,6 +103,18 @@ const SegPage2 = () => {
             </div>
           </div>
         )}
+        {
+          <div className='CollectionForm' id='CollectionForm'>
+          <form>
+            <textarea 
+                  value={cForm.data}
+                  placeholder="Data"
+                  onChange={handleChange}
+                  name="data"
+              />
+          </form>
+          </div>
+        }
         {(
           <div style={styles.preview} className ="SegmentationPageUI2">
             <img
@@ -103,6 +131,12 @@ const SegPage2 = () => {
             <button onClick={downloadImage}>Download</button>
           </div>
         )}
+        { fetchRatio && (
+        <VictoryPie
+          colorScale={["gray", "red", "yellow", "blue", "purple", 'green', 'orange']}
+          data={fetchRatio}
+        /> )
+        }
         </div>
       </div>
    

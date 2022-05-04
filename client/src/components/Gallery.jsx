@@ -1,13 +1,14 @@
 import React from 'react'
+import AreaGraph from "../components/AreaGraph";
 
-export default function GeoJsonForm() {
+export default function Gallery() {
 
     const style = {
         'border': '1px solid black',
         'width': '100%',
         'height': '100px',
-        'backgroundColor': '#000000'
-    }
+        'backgroundColor': '#005477'
+      }
 
     let gejsonTemplate = {
         "type": "FeatureCollection",
@@ -54,6 +55,7 @@ export default function GeoJsonForm() {
         <button className='GeoJsonForm--submit' onClick={handleSubmit}>
             Submit
         </button>
+        <AreaGraph/>
         </div>
     )
 }
