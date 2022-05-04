@@ -20,9 +20,14 @@
 
 .SegmentationPageUI2{
   display:flex;
-  margin-left:400px;
+  margin-left:100px;
 }
 
+.pieChartExplanation{
+  display: flex;
+  font-size: 8px;
+  text-align: center;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -143,4 +148,8 @@
 
 input {
   color: transparent;
+}
+
+.radialChart{
+  padding-top: 100px;
 }

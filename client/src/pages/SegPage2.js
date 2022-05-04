@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver'
 import axios from "axios";
 import '../App.css';
 import Logo from "../images/uploadimage.jfif";
-
+import { PieChart } from 'react-minimal-pie-chart';
 
 
 const SegPage2 = () => {
@@ -87,6 +87,46 @@ const SegPage2 = () => {
             </div>
           </div>
         )}
+        <div className = "radialChart">
+        <PieChart
+            data={[
+              { title: 'Red',  value: 10, color: '#FF0000' },
+              { title: 'Yellow', value: 15, color: '#FFFF00' },
+              { title: 'Blue', value: 20, color: '#0000ff' },
+              { title: 'Purple', value: 20, color: '#9f81b7' },
+              { title: 'Green', value: 20, color: '#00FF00' },
+              { title: 'Red', value: 20, color: '#FFC380' },
+            ]}
+            />
+             <div >
+            <div className="pieChartExplanation">
+            <div  className="color" style={{"background-color": "#FF0000",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+            <div>Building</div>
+             </div>
+             <div className="pieChartExplanation">
+            <div  className="color" style={{"background-color": "#FFFF00",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+            <div>Road</div>
+             </div>
+             <div className="pieChartExplanation">
+            <div  className="color" style={{"background-color": "#0000FF",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+            <div>Water</div>
+             </div>
+             <div className="pieChartExplanation">
+            <div  className="color" style={{"background-color": "#9F81B7",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+            <div>Barren</div>
+             </div>
+             <div className="pieChartExplanation">
+            <div  className="color" style={{"background-color": "#00FF00",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+            <div>Forest</div>
+             </div>
+             <div className="pieChartExplanation">
+            <div  className="color" style={{"background-color": "#FFC380",  "width": "30px", "height": "30px", "border-radius": "50%" }} id="000000"></div>
+            <div>Agricultural</div>
+             </div>
+             
+             
+             </div>
+    </div>
         {(
           <div style={styles.preview} className ="SegmentationPageUI2">
             <img
@@ -101,6 +141,8 @@ const SegPage2 = () => {
               Remove This Image
             </button>
             <button onClick={downloadImage}>Download</button>
+           
+
           </div>
         )}
         </div>
