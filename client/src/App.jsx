@@ -12,11 +12,13 @@ import { taskMiddleware } from "react-palm/tasks";
 import { Provider, useDispatch } from "react-redux";
 import KeplerGl, {DEFAULT_MAP_STYLES} from "kepler.gl";
 import { addDataToMap } from "kepler.gl/actions";
-import useSwr from "swr";
+import useSWR from "swr";
 import AnnotationPage from './pages/AnnotationPage';
 import ManipulatorPage from './pages/ManipulatorPage';
 import GalleryPage from './pages/GalleryPage';
+import CarouselComp from './components/CarouselComp';
 const  MapBoxAccessToken  = process.env.REACT_APP_MAPBOX_TOKEN
+
 
 /*const reducers = combineReducers({
   keplerGl: keplerGlReducer
@@ -51,6 +53,7 @@ export default function App() {
         <Route path='/Annotation' element={<AnnotationPage/>}/>
         <Route path='/Manipulator' element={<ManipulatorPage/>}/>
         <Route path='/Gallery' element={<GalleryPage/>}/>
+        <Route path='/Carousel' element={<CarouselComp/>}/>
       </Routes>
     </Router>
     </Provider>

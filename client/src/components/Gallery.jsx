@@ -1,7 +1,18 @@
 import React from 'react'
 import AreaGraph from "../components/AreaGraph";
+import useSWR from "swr";
+import axios from "axios";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import CarouselComp from './CarouselComp';
+const fetcher = url => axios.get(url).then(res => res.data)
+
 
 export default function Gallery() {
+    //const [collectionList, setCollectionList] = React.useState();
+    const [collectionName, setCollectionName] = React.useState("");
+    const { data, error } = useSWR('http://127.0.0.1:5000/list_collections', fetcher)
+    console.log(data)
 
     const style = {
         'border': '1px solid black',
@@ -16,6 +27,7 @@ export default function Gallery() {
         ]
     }
 
+    
 
     const  [formData, setFormData] = React.useState({
         data:""    })
@@ -28,34 +40,61 @@ export default function Gallery() {
         }))
     }
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        //do something with the data
-        gejsonTemplate.features.push(JSON.parse(formData.data))
-        let newData = gejsonTemplate
-        console.log(newData)
+    function MakeItem(x) {
+        return <option> {x} </option>
     }
+
+    function handleSubmit(event) {
+        
+        if (collectionName) {
+            const formData = new FormData();
+            formData.append("cname", collectionName);
+            axios
+            .post("http://127.0.0.1:5000/retrieve_collection", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+            console.log(res.data)
+            })
+            .catch((err) => 
+            {  
+              console.log(err)});
+          }
+          else {
+            console.log('no image selected')
+          }
+    }
+    const selectHandler = (event) => {
+        const value = event.target.value
+       console.log(value)
+       setCollectionName(value)
+        console.log(collectionName)
+    }
+
+    
 
     return (
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
         <form>
-         <textarea 
-                value={formData.comments}
-                placeholder="Data"
-                onChange={handleChange}
-                name="data"
-            />
-            <select>
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option selected value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
+            <select onChange={selectHandler}>
+                {data && data.map(MakeItem)}
             </select>
         </form>
         <button className='GeoJsonForm--submit' onClick={handleSubmit}>
             Submit
         </button>
-        <AreaGraph/>
+       <CarouselComp/>
+         <AreaGraph/>
         </div>
     )
 }
+
+/*
+ event.preventDefault()
+        //do something with the data
+        gejsonTemplate.features.push(JSON.parse(formData.data))
+        let newData = gejsonTemplate
+        console.log(newData) 
+*/

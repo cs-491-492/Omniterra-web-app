@@ -5,7 +5,7 @@ import axios from "axios";
 import '../App.css';
 import Logo from "../images/uploadimage.jfif";
 import {VictoryPie} from 'victory'
-
+import useSwr from 'swr'
 
 
 const SegPage2 = () => {
