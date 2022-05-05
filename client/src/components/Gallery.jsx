@@ -20,7 +20,12 @@ export default function Gallery() {
         'border': '1px solid black',
         'width': '100%',
         'height': '100px',
-        'backgroundColor': '#005477'
+        'backgroundColor': '#005477',
+        display: "flex",
+        flexDirection: "column",
+       padding: "20px",
+        alignItems: "center",
+       
       }
 
     let gejsonTemplate = {
@@ -98,20 +103,23 @@ export default function Gallery() {
 
     return (
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
-        <form>
-            <select onChange={selectHandler}>
-                {data && data.map(MakeItem)}
-            </select>
-        </form>
-        <button className='GeoJsonForm--submit' onClick={handleSubmit}>
-            Submit
-        </button>
-        <div style={{"height" : "500px","width" : "500px" }}>
-             <Carousel>
-               {imageArray !== [] && imageArray.map(MakeImgItem)}
-        </Carousel>
-        </div>
-         <AreaGraph/>
+            <div style={{padding:"50px"}}>
+            <form>
+                <select onChange={selectHandler}>
+                    {data && data.map(MakeItem)}
+                </select>
+            </form>
+            <button className='GeoJsonForm--submit' onClick={handleSubmit}>
+                Submit
+            </button>
+             </div>
+           
+            <div style={{"height" : "600px","width" : "500px" }}>
+                <Carousel>
+                    {imageArray !== [] && imageArray.map(MakeImgItem)}
+                </Carousel>
+             </div>
+        {ratioArray !==[] && <AreaGraph/>}
         </div>
     )
 }

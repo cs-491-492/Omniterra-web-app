@@ -15,7 +15,7 @@ class AreaGraph extends React.Component {
 
     const style = {
         'width': '100%',
-        'height': '200px',
+        'height': '400px',
     }
       return (
         <div style={style}>
