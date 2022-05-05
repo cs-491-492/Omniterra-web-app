@@ -103,18 +103,7 @@ const SegPage2 = () => {
             </div>
           </div>
         )}
-        {
-          <div className='CollectionForm' id='CollectionForm'>
-          <form>
-            <textarea 
-                  value={cForm.data}
-                  placeholder="Data"
-                  onChange={handleChange}
-                  name="data"
-              />
-          </form>
-          </div>
-        }
+       
         {(
           <div style={styles.preview} className ="SegmentationPageUI2">
             <img
@@ -131,6 +120,21 @@ const SegPage2 = () => {
             <button onClick={downloadImage}>Download</button>
           </div>
         )}
+      
+        </div>
+        <div style={styles.collectionForm}>
+        {
+          <div className='CollectionForm' id='CollectionForm'>
+          <form>
+            <textarea 
+                  value={cForm.data}
+                  placeholder="Data"
+                  onChange={handleChange}
+                  name="data"
+              />
+          </form>
+          </div>
+        }
         { fetchRatio && (
         <VictoryPie
           colorScale={["gray", "red", "yellow", "blue", "purple", 'green', 'orange']}
@@ -148,25 +152,31 @@ export default SegPage2;
 // Just some styles
 const styles = {
   container: {
-    
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 20
+    paddingTop: 20,
   },
   preview: {
     marginTop: 50,
     display: "flex",
     flexDirection: "column"
   },
-  image: { width: 500, height: 500 },
+  image: { width: 400, height: 400, border: "1px solid #dee2e6" },
   delete: {
     cursor: "pointer",
     padding: 15,
     background: "red",
     color: "white",
     border: "none"
+  },
+  collectionForm: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 20,
   }
 };
 
