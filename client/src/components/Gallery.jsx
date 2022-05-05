@@ -11,6 +11,8 @@ const fetcher = url => axios.get(url).then(res => res.data)
 export default function Gallery() {
     //const [collectionList, setCollectionList] = React.useState();
     const [collectionName, setCollectionName] = React.useState("");
+    const [imageArray, setImageArray] = React.useState([]);
+    const [ratioArray, setRatioArray] = React.useState([]);
     const { data, error } = useSWR('http://127.0.0.1:5000/list_collections', fetcher)
     console.log(data)
 
@@ -56,7 +58,20 @@ export default function Gallery() {
               },
             })
             .then((res) => {
-            console.log(res.data)
+           let myData = res.data;
+           let arr = [];
+           myData.forEach(element => {
+               arr.push(element.img)
+           }
+               )
+            setImageArray(arr)
+             arr = [];
+            myData.forEach(element => {
+                arr.push(element.ratio_dict)
+            })
+            setRatioArray(arr)
+            console.log(imageArray)
+            console.log(ratioArray)
             })
             .catch((err) => 
             {  
