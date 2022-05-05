@@ -1,6 +1,7 @@
 import React from 'react'
+//import { geoJsonData } from '../data/data'
 
-export default function GeoJsonForm() {
+export default function GeoJsonForm({geoJsonData}) {
 
     const style = {
         'border': '1px solid black',
@@ -9,11 +10,10 @@ export default function GeoJsonForm() {
         'backgroundColor': '#000000'
     }
 
-    let gejsonTemplate = {
-        "type": "FeatureCollection",
-        "features": [
-        ]
-    }
+    let data =  [{
+      type:"Feature"
+   }]
+      
 
 
     const  [formData, setFormData] = React.useState({
@@ -30,9 +30,11 @@ export default function GeoJsonForm() {
     function handleSubmit(event) {
         event.preventDefault()
         //do something with the data
-        gejsonTemplate.features.push(JSON.parse(formData.data))
-        let newData = gejsonTemplate
-        console.log(newData)
+      // let jsonArr =  JSON.parse(data)
+      data[0].geometry = JSON.parse(formData.data)
+      geoJsonData.rows.push(data)
+      console.log(geoJsonData)
+       console.log(data)
     }
 
     return (

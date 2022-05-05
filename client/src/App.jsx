@@ -1,4 +1,5 @@
 import React from 'react';
+import {geoJsonData} from './data/data.js'
 import './App.css';
 import MapPage from './pages/MapPage';
 import HomePage from './pages/HomePage';
@@ -42,6 +43,9 @@ const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
 
 
 export default function App() {
+
+ 
+
   return (
     <Provider store={store}>
     <Router>
@@ -62,12 +66,146 @@ export default function App() {
 }
 
 function Kgl(){
+  const dispatch = useDispatch();
+  let data = geoJsonData
+
+React.useEffect(() => {
+
+  if (data) {
+    dispatch(
+      addDataToMap({
+        datasets: {
+          info: {
+            label: "Data",
+            id: "Data"
+          },
+         data: data
+        },
+        option: {
+          centerMap: true,
+          readOnly: false
+        },
+        config: {}
+      })
+    );
+  }
+}, [dispatch, data ]);
+
+
+
   return <div>
     <OmAppBar2/>
-   <GeoJsonForm/>
+    {/*  <GeoJsonForm geoJsonData={data}/> */}
     <KeplerGl id="map-1" mapboxApiAccessToken={MapBoxAccessToken} 
      width={window.innerWidth} height={window.innerHeight} styleType={'light'}/>
   
   </div>
 }
 //width={window.innerWidth} height={window.innerHeight}
+//   <GeoJsonForm />
+
+/*
+
+React.useEffect(() => {
+  if (data) {
+    dispatch(
+      addDataToMap({
+        datasets: {
+          info: {
+            label: "hey",
+            id: "hey"
+          },
+         data: data
+        },
+        option: {
+          centerMap: true,
+          readOnly: false
+        },
+        config: {}
+      })
+    );
+  }
+}, [dispatch, data]);
+*/
+
+/*
+ {
+        fields: 
+          [
+            {
+              "name":"_geojson",
+              "type":"geojson",
+              "format":"",
+              "analyzerType":"GEOMETRY"
+           },
+         
+           
+         ],
+        rows: [
+          [
+             {
+                "type":"Feature",
+                "geometry":{
+                   "type":"Polygon",
+                   "coordinates":[
+                      [
+                         [
+                            104.94065978802936,
+                            -4.447213075711515
+                         ],
+                         [
+                            104.94065978802936,
+                            -7.36876298598175
+                         ],
+                         [
+                            108.81812774118436,
+                            -7.36876298598175
+                         ],
+                         [
+                            108.81812774118436,
+                            -4.447213075711515
+                         ],
+                         [
+                            104.94065978802936,
+                            -4.447213075711515
+                         ]
+                      ]
+                   ]
+                }
+             }
+          ],
+          [
+             {
+                "type":"Feature",
+                "geometry":{
+                   "type":"Polygon",
+                   "coordinates":[
+                      [
+                         [
+                            102.19818062000978,
+                            -0.9027508363555458
+                         ],
+                         [
+                            102.19818062000978,
+                            -2.886497863202886
+                         ],
+                         [
+                            105.77105723495364,
+                            -2.886497863202886
+                         ],
+                         [
+                            105.77105723495364,
+                            -0.9027508363555458
+                         ],
+                         [
+                            102.19818062000978,
+                            -0.9027508363555458
+                         ]
+                      ]
+                   ]
+                }
+             }
+          ]
+       ]
+      }
+*/

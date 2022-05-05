@@ -7,7 +7,7 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { ConstructionOutlined } from '@mui/icons-material';
-import earthquakes from '../data/earthquakes.json'
+
 
 const  MapBoxAcessToken  = process.env.REACT_APP_MAPBOX_TOKEN 
 const MapStyle  = "mapbox://styles/mapbox/satellite-v9"
