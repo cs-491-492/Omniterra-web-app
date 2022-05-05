@@ -57,7 +57,7 @@ export default function App() {
         <Route path='/Annotation' element={<AnnotationPage/>}/>
         <Route path='/Manipulator' element={<ManipulatorPage/>}/>
         <Route path='/Gallery' element={<GalleryPage/>}/>
-        <Route path='/Carousel' element={<CarouselComp/>}/>
+    
       </Routes>
     </Router>
     </Provider>
