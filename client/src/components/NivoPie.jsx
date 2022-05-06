@@ -20,6 +20,7 @@ export default function PieChart({input_data}) {
             arcLinkLabelsSkipAngle={10}
             arcLinkLabelsTextColor="#333333"
             arcLinkLabelsThickness={2}
+            colors={({data}) => data['color']}
             arcLinkLabelsColor={{ from: 'color' }}
             arcLabelsSkipAngle={10}
             arcLabelsTextColor="#333333"
