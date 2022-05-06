@@ -137,7 +137,7 @@ export default function Gallery() {
            
             <div style={{"height" : "600px","width" : "500px" }}>
                 <Carousel>
-                    {imageArray !== [] && imageArray.map(MakeImgItem)}
+                    {imageArray.length !== 0 && imageArray.map(MakeImgItem)}
                 </Carousel>
              </div>
         
