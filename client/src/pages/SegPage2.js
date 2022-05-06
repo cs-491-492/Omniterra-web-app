@@ -3,8 +3,9 @@ import { useState } from "react";
 import { saveAs } from 'file-saver'
 import axios from "axios";
 import '../App.css';
+import {VictoryPie} from 'victory';
 import Logo from "../images/uploadimage.jfif";
-import {VictoryPie} from 'victory'
+import PieChart from '../components/NivoPie';
 import useSwr from 'swr'
 
 
@@ -128,18 +129,17 @@ const SegPage2 = () => {
           <form>
             <textarea 
                   value={cForm.data}
-                  placeholder="Data"
+                  placeholder="Enter Collection Name to Save"
                   onChange={handleChange}
                   name="data"
               />
           </form>
           </div>
         }
-        { fetchRatio && (
-        <VictoryPie
-          colorScale={["gray", "red", "yellow", "blue", "purple", 'green', 'orange']}
-          data={fetchRatio}
-        /> )
+        { fetchRatio && ( 
+          
+            <PieChart input_data={fetchRatio}/>
+         )
         }
         </div>
       </div>

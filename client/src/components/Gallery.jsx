@@ -16,6 +16,27 @@ export default function Gallery() {
     const { data, error } = useSWR('http://127.0.0.1:5000/list_collections', fetcher)
     console.log(data)
 
+    const customStyles = {
+        menu: (provided, state) => ({
+          ...provided,
+          width: state.selectProps.width,
+          borderBottom: '1px dotted pink',
+          color: state.selectProps.menuColor,
+          padding: 20,
+        }),
+      
+        control: (_, { selectProps: { width }}) => ({
+          width: width
+        }),
+      
+        singleValue: (provided, state) => {
+          const opacity = state.isDisabled ? 0.5 : 1;
+          const transition = 'opacity 300ms';
+      
+          return { ...provided, opacity, transition };
+        }
+      }
+
     const style = {
         'border': '1px solid black',
         'width': '100%',
@@ -105,7 +126,7 @@ export default function Gallery() {
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
             <div style={{padding:"50px"}}>
             <form>
-                <select onChange={selectHandler}>
+                <select onChange={selectHandler} styles={customStyles} width='200px' menuColor='blue'>
                     {data && data.map(MakeItem)}
                 </select>
             </form>
@@ -119,11 +140,11 @@ export default function Gallery() {
                     {imageArray !== [] && imageArray.map(MakeImgItem)}
                 </Carousel>
              </div>
-        {ratioArray !==[] && <AreaGraph/>}
+        
         </div>
     )
 }
-
+//{ratioArray !==[] && <AreaGraph data={ratioArray}/>}
 /*
  event.preventDefault()
         //do something with the data
