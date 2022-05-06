@@ -34,9 +34,7 @@ let nivoData = () => {
   ];
 };
 export class AreaGraph extends Component {
-  state = {
-    data: nivoData()
-  };
+  
   customTooltip = ({ point }) => {
     return (
       <p style={styles.tooltip}>
@@ -53,7 +51,7 @@ export class AreaGraph extends Component {
         <h3 style={styles.title}>Nivo Stacked Area Chart</h3>
         <ResponsiveLine
           animate
-          data={this.state.data}
+          data={this.props.data}
           margin={{ top: 24, right: 96, bottom: 72, left: 64 }}
           xFormat={d => moment(d).format("mm:ss")}
           xScale={{ type: "time", format: "native" }}

@@ -47,6 +47,8 @@ export default function Gallery() {
         flexDirection: "column",
        padding: "20px",
         alignItems: "center",
+
+        
        
       }
 
@@ -74,7 +76,7 @@ export default function Gallery() {
     }
     function MakeImgItem(imgSent) {
         return  <div>
-        <img src={`data:image/png;base64, ${imgSent}`}alt="" height={"200px"} width={"200px"}/>
+        <img src={`data:image/png;base64, ${imgSent}`}alt="" height={"500px"} width={"700px"}/>
         
     </div>
     }
@@ -124,6 +126,7 @@ export default function Gallery() {
     
 
     return (
+        <div >
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
             <div style={{padding:"50px"}}>
             <form>
@@ -134,16 +137,19 @@ export default function Gallery() {
             <button className='GeoJsonForm--submit' onClick={handleSubmit}>
                 Submit
             </button>
-             </div>
-           
-            <div style={{"height" : "600px","width" : "500px" }}>
-                <Carousel>
+             </div >
+             <div style={{"height" : "500px","width" : "700px", "border": "1px solid #dee2e6" }}>
+                <Carousel showThumbs={false}>
                     {imageArray.length !== 0 && imageArray.map(MakeImgItem)}
                 </Carousel>
              </div>
-             <br/>
              {ratioArray.length !== 0 && <AreaGraph data={ratioArray}/>}
-        
+             </div>
+           
+          
+            
+          
+     
         </div>
     )
 }

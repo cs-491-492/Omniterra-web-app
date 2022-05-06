@@ -7,6 +7,7 @@ import {VictoryPie} from 'victory';
 import Logo from "../images/uploadimage.jfif";
 import PieChart from '../components/NivoPie';
 import useSwr from 'swr'
+import '../components/graph_styles/text_area_style.css'
 
 
 const SegPage2 = () => {
@@ -128,10 +129,12 @@ const SegPage2 = () => {
           <div className='CollectionForm' id='CollectionForm'>
           <form>
             <textarea 
+            className="textarea"
                   value={cForm.data}
                   placeholder="Enter Collection Name to Save"
                   onChange={handleChange}
                   name="data"
+                  style={{}}
               />
           </form>
           </div>
