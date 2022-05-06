@@ -4,7 +4,7 @@ import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import CarouselComp from './CarouselComp';
-import { AreaGraph } from '../components/AreaGraph';
+import AreaGraph from '../components/AreaGraph';
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
@@ -96,6 +96,7 @@ export default function Gallery() {
            let myData = res.data;
             setImageArray(myData.imgs)
             setRatioArray(myData.plot_array)
+            console.log(myData.plot_array)
             })
             .catch((err) => 
             {  
@@ -132,7 +133,7 @@ export default function Gallery() {
                     {imageArray.length !== 0 && imageArray.map(MakeImgItem)}
                 </Carousel>
              </div>
-             {ratioArray.length !== 0 && <AreaGraph data={{id: 'collection', data: ratioArray}}/>}
+             {ratioArray.length !== 0 && <AreaGraph input_data={ratioArray}/>}
              </div>
            
           
