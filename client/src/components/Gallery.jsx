@@ -94,20 +94,8 @@ export default function Gallery() {
             })
             .then((res) => {
            let myData = res.data;
-           let arr = [];
-           myData.forEach(element => {
-               arr.push(element.img)
-           }
-               )
-            setImageArray(arr)
-             arr = [];
-            myData.forEach(element => {
-                arr.push(element.ratio_dict[0])
-            })
-            setRatioArray(arr)
-            console.log(imageArray)
-            console.log(ratioArray)
-            console.log({id: 'collection', data: ratioArray})
+            setImageArray(myData.imgs)
+            setRatioArray(myData.plot_array)
             })
             .catch((err) => 
             {  
