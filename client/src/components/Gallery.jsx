@@ -118,17 +118,18 @@ export default function Gallery() {
     return (
         <div >
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
-            <div style={{padding:"50px"}}>
+            <div style={{padding:"40px", width:"100px", height:"30px", display: "flex", }}>
             <form>
-                <select onChange={selectHandler} styles={customStyles} width='200px' menuColor='blue'>
+                <select onChange={selectHandler} style={{height:"50px", width:"150px", color:"white", background:"black"}} width='200px' menuColor='blue' name="cars">
+                <option>  </option>
                     {data && data.map(MakeItem)}
                 </select>
             </form>
-            <button className='GeoJsonForm--submit' onClick={handleSubmit}>
+            <button className='GeoJsonForm--submit' onClick={handleSubmit} style={{height:"30px", margin:"10px", background:"black", color:"white"}}>
                 Submit
             </button>
              </div >
-             <div style={{"height" : "500px","width" : "700px", "border": "1px solid #dee2e6" }}>
+             <div style={{"height" : "500px","width" : "700px", margin:"30px" ,"border": "1px solid #dee2e6"}}>
                 <Carousel showThumbs={false}>
                     {imageArray.length !== 0 && imageArray.map(MakeImgItem)}
                 </Carousel>
