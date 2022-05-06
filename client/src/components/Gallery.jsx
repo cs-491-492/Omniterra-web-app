@@ -102,11 +102,12 @@ export default function Gallery() {
             setImageArray(arr)
              arr = [];
             myData.forEach(element => {
-                arr.push(element.ratio_dict)
+                arr.push(element.ratio_dict[0])
             })
             setRatioArray(arr)
             console.log(imageArray)
             console.log(ratioArray)
+            console.log({id: 'collection', data: ratioArray})
             })
             .catch((err) => 
             {  
@@ -143,7 +144,7 @@ export default function Gallery() {
                     {imageArray.length !== 0 && imageArray.map(MakeImgItem)}
                 </Carousel>
              </div>
-             {ratioArray.length !== 0 && <AreaGraph data={ratioArray}/>}
+             {ratioArray.length !== 0 && <AreaGraph data={{id: 'collection', data: ratioArray}}/>}
              </div>
            
           
