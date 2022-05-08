@@ -44,8 +44,8 @@ function OmMapBox ()  {
     }
 
      const onClickScreenShot = async () =>{
-        const size = `${viewport.width}x${viewport.height}`;
-        const size2= `${1280}x${1280}`
+        //const size = `${viewport.width}x${viewport.height}`;
+       // const size2= `${1280}x${1280}`
         const size3 = `${1024}x${1024}`
         const reqStr = createReq(MapStyleReq, viewport.longitude,
          viewport.latitude, viewport.zoom,size3, MapBoxAcessToken );
@@ -56,9 +56,23 @@ function OmMapBox ()  {
             method:'GET',
             responseType: 'blob'
         })  
+        
         const img = window.URL.createObjectURL(new Blob([response.data],{type:'image/png'}))
         console.log(img)
-        FileSaver.saveAs(img, "img.png")
+      // crop 10 px from the bottom of img
+    
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = 1024;
+        const ctx = canvas.getContext('2d');
+        const img2 = new Image();
+        img2.src = img;
+        img2.onload = () => {
+        console.log(img2)
+        ctx.drawImage(img2, 0 ,-20, 1024, 1024, 0, 0, 1024, 1024);
+        const dataURL = canvas.toDataURL('image/png');
+        FileSaver.saveAs(dataURL, "img.png")
+        }
     }
 
     const map =  <ReactMapGL {...viewport} mapboxApiAccessToken= {MapBoxAcessToken} 
