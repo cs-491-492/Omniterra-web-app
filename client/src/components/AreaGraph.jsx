@@ -12,7 +12,7 @@ export default function AreaGraph({input_data})  {
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         yScale={{
           type: "linear",
-          min: 'auto',
+          min: 0,
           max: 'auto',
           stacked: true,
           reverse: false
