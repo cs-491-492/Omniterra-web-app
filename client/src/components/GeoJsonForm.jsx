@@ -1,7 +1,8 @@
 import React from 'react'
+import axios from 'axios'
 //import { geoJsonData } from '../data/data'
 
-export default function GeoJsonForm({geoJsonData}) {
+export default function GeoJsonForm() {
 
     const style = {
         'border': '1px solid black',
@@ -10,9 +11,6 @@ export default function GeoJsonForm({geoJsonData}) {
         'backgroundColor': '#000000'
     }
 
-    let data =  [{
-      type:"Feature"
-   }]
       
 
 
@@ -31,27 +29,35 @@ export default function GeoJsonForm({geoJsonData}) {
         event.preventDefault()
         //do something with the data
       // let jsonArr =  JSON.parse(data)
-      data[0].geometry = JSON.parse(formData.data)
-      geoJsonData.rows.push(data)
-      console.log(geoJsonData)
-       console.log(data)
+      let data = JSON.parse(formData.data)
+      console.log(data)
+      const frmData = new FormData();
+      data = JSON.stringify(data)
+      frmData.append("data", data);
+      axios
+      .post("http://127.0.0.1:5000/add_data", frmData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+      console.log(res.data)
+      })
+      .catch((err) => 
+      {  
+        console.log(err)});
     }
+    
 
     return (
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
         <form>
          <textarea 
-                value={formData.comments}
+                value={formData.data}
                 placeholder="Data"
                 onChange={handleChange}
                 name="data"
             />
-            <select>
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option selected value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
-            </select>
         </form>
         <button className='GeoJsonForm--submit' onClick={handleSubmit}>
             Submit

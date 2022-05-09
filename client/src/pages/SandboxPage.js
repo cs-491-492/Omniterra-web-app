@@ -1,13 +1,14 @@
 import React from 'react';
 import OmAppBar2 from "../components/OmAppBar2";
 import KGL from "../components/KeplerGL";
+import GeoJsonForm from '../components/GeoJsonForm';
 
 
 function SandboxPage() {
    return(
        <div style={{ display: "flex", justifyContent: "flex-end", flexDirection:'column' }}>
        <OmAppBar2/>    
-       {/*  <GeoJsonForm geoJsonData={data}/> */}
+       <GeoJsonForm /> 
        <KGL/>
    </div>
    )
