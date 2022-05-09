@@ -51,7 +51,6 @@ export default function App() {
         <Route path='/Segment' element= {<SegmentationPage/>}/>
         <Route path='/Sandbox' element={<SandboxPage/>}/>
         <Route path='/Annotation' element={<AnnotationPage/>}/>
-        <Route path='/Manipulator' element={<ManipulatorPage/>}/>
         <Route path='/Gallery' element={<GalleryPage/>}/>
     
       </Routes>

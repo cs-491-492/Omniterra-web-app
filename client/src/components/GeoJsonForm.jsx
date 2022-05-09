@@ -28,24 +28,25 @@ export default function GeoJsonForm() {
     function handleSubmit(event) {
         event.preventDefault()
         //do something with the data
-      // let jsonArr =  JSON.parse(data)
-      let data = JSON.parse(formData.data)
-      console.log(data)
-      const frmData = new FormData();
-      data = JSON.stringify(data)
-      frmData.append("data", data);
-      axios
-      .post("http://127.0.0.1:5000/add_data", frmData, {
+        // let jsonArr =  JSON.parse(data)
+        let data = JSON.parse(formData.data)
+        console.log(data)
+        const frmData = new FormData();
+        data = JSON.stringify(data)
+        frmData.append("data", data);
+        axios
+        .post("http://127.0.0.1:5000/add_data", frmData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+            "Content-Type": "multipart/form-data",
         },
-      })
-      .then((res) => {
-      console.log(res.data)
-      })
-      .catch((err) => 
-      {  
+        })
+        .then((res) => {
+        console.log(res.data)
+        })
+        .catch((err) => 
+        {  
         console.log(err)});
+        window.location.reload(false);
     }
     
 
