@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 //import { geoJsonData } from '../data/data'
+import '../App.css';
 
 export default function GeoJsonForm() {
 
