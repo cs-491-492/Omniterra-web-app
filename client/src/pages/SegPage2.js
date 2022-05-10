@@ -24,6 +24,7 @@ const SegPage2 = () => {
 
   // This function will be triggered when the "Remove This Image" button is clicked
   const removeSelectedImage = () => {
+    document.getElementById("CollectionForm").style.display = "inline";
     setSelectedImage();
   };
 
@@ -55,6 +56,7 @@ const SegPage2 = () => {
       {  setimgSent(selectedImage)
          setFetchError(true)
         console.log(err)});
+        document.getElementById("CollectionForm").style.display = "none";
     }
     else {
       console.log('no image selected')
