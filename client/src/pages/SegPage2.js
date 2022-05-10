@@ -175,7 +175,7 @@ const styles = {
   image: { width: 400, height: 400, border: "1px solid #dee2e6" },
   delete: {
     cursor: "pointer",
-    padding: 15,
+    padding: 0,
     background: "red",
     color: "white",
     border: "none",
