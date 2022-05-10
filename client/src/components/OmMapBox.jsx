@@ -69,7 +69,7 @@ function OmMapBox ()  {
         img2.src = img;
         img2.onload = () => {
         console.log(img2)
-        ctx.drawImage(img2, 0 ,-20, 1024, 1024, 0, 0, 1024, 1024);
+        ctx.drawImage(img2, 20 ,20, 984, 984, 0, 0, 1024, 1024);
         const dataURL = canvas.toDataURL('image/png');
         FileSaver.saveAs(dataURL, "img.png")
         }
