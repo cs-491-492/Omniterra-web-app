@@ -16,6 +16,7 @@ import ManipulatorPage from './pages/ManipulatorPage';
 import GalleryPage from './pages/GalleryPage';
 import SandboxPage from './pages/SandboxPage';
 import CarouselComp from './components/CarouselComp';
+import LandcoverComp from './components/LandcoverComp';
 import {DEFAULT_MAP_STYLES} from "kepler.gl";
 import keplerGlReducer, {mapStateUpdaters} from "kepler.gl/reducers";
 
@@ -52,7 +53,7 @@ export default function App() {
         <Route path='/Sandbox' element={<SandboxPage/>}/>
         <Route path='/Annotation' element={<AnnotationPage/>}/>
         <Route path='/Gallery' element={<GalleryPage/>}/>
-    
+        <Route path='/Landcover' element={<LandcoverComp to={'http://localhost:8080/'}/>}/>
       </Routes>
     </Router>
     </Provider>

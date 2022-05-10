@@ -39,12 +39,13 @@ export default function GeoJsonForm() {
         headers: {
             "Content-Type": "multipart/form-data",
         },
-        })
-        .then((res) => {
-        console.log(res.data)
-        })
-        .catch((err) => 
-        {  
+      })
+      .then((res) => {
+      console.log(res.data)
+      
+      })
+      .catch((err) => 
+      {  
         console.log(err)});
         window.location.reload(false);
     }
