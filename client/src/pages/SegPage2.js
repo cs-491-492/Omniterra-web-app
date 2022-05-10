@@ -101,7 +101,7 @@ const SegPage2 = () => {
             
               <input accept="image/*" type="file" onChange={imageChange} title = "empty"/>
             
-            <button onClick={removeSelectedImage} style={selectedImage ? styles.delete : styles.deleteDisabled}   >
+            <button onClick={removeSelectedImage} style={styles.delete}   >
               Remove Image
             </button>
             <button className = "btn" onClick={sendImg}> Send Image </button>
@@ -120,7 +120,7 @@ const SegPage2 = () => {
                }
               style={styles.image}
             />
-            <button onClick={removeSentImage} style={imgSent ? styles.delete : styles.deleteDisabled}  >
+            <button onClick={removeSentImage} style={styles.delete}  >
               Remove Image
             </button>
             <button onClick={downloadImage}>Download</button>

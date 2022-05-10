@@ -67,7 +67,7 @@ export default function PieChart({input_data}) {
         'width': '1000px',
         'height': '400px',
         'backgroundColor': '#FFFFFF',
-        'marginTop': '150px'
+        'marginTop': '100px'
     }
   
 
