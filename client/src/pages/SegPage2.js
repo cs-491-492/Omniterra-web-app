@@ -29,6 +29,7 @@ const SegPage2 = () => {
   };
 
   const removeSentImage = () => {
+    document.getElementById("segmentedImage").src = Logo;
     setimgSent();
   };
 
@@ -111,6 +112,7 @@ const SegPage2 = () => {
         {(
           <div style={styles.preview} className ="SegmentationPageUI2">
             <img
+             id = "segmentedImage"
              alt=""
               src={
                 fetchError ? 
@@ -177,7 +179,8 @@ const styles = {
     background: "red",
     color: "white",
     border: "none",
-    borderRadius: 4
+    borderRadius: 4,
+    fontSize: 12
   },
   deleteDisabled: {
     cursor: "not-allowed",
