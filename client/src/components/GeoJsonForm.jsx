@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 //import { geoJsonData } from '../data/data'
+import '../App.css';
+import './graph_styles/text_area_style.css'
 
 export default function GeoJsonForm() {
 
@@ -54,8 +56,9 @@ export default function GeoJsonForm() {
         <div className='GeoJsonForm' id='GeoJsonForm' style={style}>
         <form>
          <textarea 
+                className = "textarea2"
                 value={formData.data}
-                placeholder="Data"
+                placeholder="Enter Data"
                 onChange={handleChange}
                 name="data"
             />

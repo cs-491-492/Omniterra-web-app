@@ -2,7 +2,7 @@ import React from 'react';
 import OmAppBar2 from "../components/OmAppBar2";
 import KGL from "../components/KeplerGL";
 import GeoJsonForm from '../components/GeoJsonForm';
-
+import '../App.css';
 
 function SandboxPage() {
    return(

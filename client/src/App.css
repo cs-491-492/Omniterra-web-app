@@ -125,15 +125,16 @@
   margin-right: 10px !important;
 }
 .btn {
-  margin-top: 20px;
+  margin-top: 0px;
   display: inline-block;
   outline: 0;
   cursor: pointer;
   text-align: center;
   border: 0;
-  padding: 7px 16px;
-  min-height: 36px;
-  min-width: 36px;
+  padding: 0px 0px;
+  
+  height: 60px;
+  width: 60px;
   color: #ffffff;
   background: #008060;
   border-radius: 4px;
@@ -152,4 +153,9 @@ input {
 
 .radialChart{
   padding-top: 100px;
+}
+
+.GeoJsonForm{
+  padding-left:650px;
+  align-items: center;
 }

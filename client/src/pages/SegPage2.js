@@ -24,6 +24,7 @@ const SegPage2 = () => {
 
   // This function will be triggered when the "Remove This Image" button is clicked
   const removeSelectedImage = () => {
+    document.getElementById("CollectionForm").style.display = "inline";
     setSelectedImage();
   };
 
@@ -55,6 +56,7 @@ const SegPage2 = () => {
       {  setimgSent(selectedImage)
          setFetchError(true)
         console.log(err)});
+      document.getElementById("CollectionForm").style.display = "none";
     }
     else {
       console.log('no image selected')
@@ -98,8 +100,8 @@ const SegPage2 = () => {
             
               <input accept="image/*" type="file" onChange={imageChange} title = "empty"/>
             
-            <button onClick={removeSelectedImage} style={styles.delete} className = {selectedImage ? "btn" : "hideButton"}>
-              Remove This Image
+            <button onClick={removeSelectedImage} style={selectedImage ? styles.delete : styles.deleteDisabled}   >
+              Remove Image
             </button>
             <button className = "btn" onClick={sendImg}> Send Image </button>
             </div>
@@ -116,8 +118,8 @@ const SegPage2 = () => {
                }
               style={styles.image}
             />
-            <button onClick={removeSentImage} style={styles.delete} className = {imgSent ? "btn" : "hideButton"} >
-              Remove This Image
+            <button onClick={removeSentImage} style={imgSent ? styles.delete : styles.deleteDisabled}  >
+              Remove Image
             </button>
             <button onClick={downloadImage}>Download</button>
           </div>
@@ -164,7 +166,9 @@ const styles = {
   preview: {
     marginTop: 50,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    width: 400,
+    height: 400
   },
   image: { width: 400, height: 400, border: "1px solid #dee2e6" },
   delete: {
@@ -172,7 +176,17 @@ const styles = {
     padding: 15,
     background: "red",
     color: "white",
-    border: "none"
+    border: "none",
+    borderRadius: 4
+  },
+  deleteDisabled: {
+    cursor: "not-allowed",
+    padding: 15,
+    background: "red",
+    color: "white",
+    border: "none",
+    background: "#ccc",
+    borderRadius: 4 
   },
   collectionForm: {
     display: "flex",

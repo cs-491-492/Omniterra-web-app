@@ -82,14 +82,15 @@ function OmMapBox ()  {
         <NavigationControl style={navControlStyle} />
         <ScaleControl maxWidth={100} unit="metric" style={scaleControlStyle} />
         <Button 
-             startIcon={<CropFreeIcon />} 
+            startIcon={<CropFreeIcon />} 
             style={{color:'#000000' ,backgroundColor: '#ffffff', 
             height:'10', width:'10', right:'30', top:'30'}}
             onClick={ onClickScreenShot}
+            title = "You can take screenshot of map and use for segmentation purpose" 
         >
     </Button>
-    <Popup trigger={<button> See Image</button>} position="right center">
-    <div><img src={imgLink} alt='idk'></img></div>
+    <Popup trigger={<button> View Screenshot</button>} position="right center">
+    <div><img src={imgLink} alt='No screenshot taken'></img></div>
     </Popup>
 
     
