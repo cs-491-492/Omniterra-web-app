@@ -11,9 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link as RouterLink } from 'react-router-dom';
 
 
-const pages = [ 'Map','Segment'];
+const pages = [ '','Map','Segment', 'Sandbox', 'Annotation', 'Gallery', 'Landcover'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const LOGONAME : string =  'OMNITERRA'
 
@@ -37,14 +38,14 @@ const OmAppBar2 = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ bgcolor: "black", maxHeight:"55px"}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, color: "#99ff99" }}
           >
             {LOGONAME}
           </Typography>
@@ -95,13 +96,16 @@ const OmAppBar2 = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
+          
+              <Button  
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                component={RouterLink} to= {'/'+ page }
               >
-                {page}
+                {page === '' ? 'Home' : page}
               </Button>
+            
             ))}
           </Box>
 
